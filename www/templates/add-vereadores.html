@@ -8,7 +8,13 @@
         <img ng-src="{{vereador.url_foto}}">
         <h2>{{vereador.nome_parlamentar}}</h2>
         <p>sem conteúdo aqui</p>
-        <span style="color: #F00" ng-show="vereador.follow">Seguindo</span>
+
+        <span ng-show="vereador.follow_loading">
+            <span class="step size-48">
+              <i class="icon ion-loop"></i> carregando
+            </span>
+        </span>
+        <span style="color: #F00" ng-show="vereador.follow && !vereador.follow_loading">Seguindo</span>
       </ion-checkbox>
     </ion-content>
   </ion-view>

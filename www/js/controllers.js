@@ -29,10 +29,15 @@ angular.module('starter.controllers', [])
   this.listaTodosVereadores = [];
 
   this.updateFollow = function(vereador) {
+    vereador.follow_loading = true;
     if(vereador.follow === true){
-      Vereadores.addFollow(vereador);
+      Vereadores.addFollow(vereador).then(function(){
+        vereador.follow_loading = false;
+      });
     } else {
-      Vereadores.removeFollow(vereador);
+      Vereadores.removeFollow(vereador).then(function(){
+        vereador.follow_loading = false;
+      });
     }
   };
 

@@ -1,4 +1,4 @@
-moduleServices.factory('Vereadores', function($http, $q, DB, Util, URL) {
+moduleServices.factory('Vereadores', function($http, $q, DB, Util, URL, MockHelper) {
 
   return {
     all: function() {
@@ -27,26 +27,38 @@ moduleServices.factory('Vereadores', function($http, $q, DB, Util, URL) {
       });
     },
     addFollow: function(vereador){
-      myFollowedVereadores = DB.load("vereador_follow");
-      if(!myFollowedVereadores){
-        myFollowedVereadores = [];
-      }
+      return $q(function(resolve, reject) {
+        setTimeout(function(){
+        
+          myFollowedVereadores = DB.load("vereador_follow");
+          if(!myFollowedVereadores){
+            myFollowedVereadores = [];
+          }
 
-      if(Util.getIndexOfItem(vereador, myFollowedVereadores) === false){
-        myFollowedVereadores.push(vereador);
-        DB.save('vereador_follow', myFollowedVereadores);
-      } else {
-        console.log("Tentativa de adicionar item que ja existe na lista de Follow vereadores");
-      }
+          if(Util.getIndexOfItem(vereador, myFollowedVereadores) === false){
+            myFollowedVereadores.push(vereador);
+            DB.save('vereador_follow', myFollowedVereadores);
+            resolve(true);
+          } else {
+            console.error("Tentativa de adicionar item que ja existe na lista de Follow vereadores");
+          }
+            
+        }, MockHelper.timeout());
+      });
     },
     removeFollow: function(vereador){
-      myFollowedVereadores = DB.load("vereador_follow");
-      var indice = Util.getIndexOfItem(vereador, myFollowedVereadores);
-      if(indice !== false){
-        myFollowedVereadores.splice(indice, 1);
-      }
-     
-      DB.save('vereador_follow', myFollowedVereadores);
+      return $q(function(resolve, reject) {
+        setTimeout(function(){
+          myFollowedVereadores = DB.load("vereador_follow");
+          var indice = Util.getIndexOfItem(vereador, myFollowedVereadores);
+          if(indice !== false){
+            myFollowedVereadores.splice(indice, 1);
+          }
+          
+          DB.save('vereador_follow', myFollowedVereadores);
+          resolve(true);
+        }, MockHelper.timeout());
+      });
     },
     get: function(vereadorId) {
 
