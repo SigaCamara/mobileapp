@@ -1,37 +1,10 @@
-angular.module('starter.services', [])
-.factory('DB', function($http, $q) {
-  return {
-    save: function (key, value){
-      localStorage.setItem(key, JSON.stringify(value));
-    },
-    load: function(key){
-      var jsonString = localStorage.getItem(key);
-      return JSON.parse(jsonString);
-    }
-  }
-})
-
-.factory('Util', function($http, $q) {
-  return {
-    getIndexOfItem: function(item, lista){
-      var itemEncontrado = false;
-      for(var i in lista){
-        var itemLista = lista[i];
-        if(itemLista.id === item.id){
-          itemEncontrado = i; 
-        }
-      }
-
-      return itemEncontrado;
-    }
-  }
-})
-.factory('Vereadores', function($http, $q, DB, Util) {
+moduleServices.factory('Vereadores', function($http, $q, DB, Util, URL) {
 
   return {
     all: function() {
       // return promise with vereadores data
-      var promise = $http.get('/mock/mock-vereadores.json').then(function (response) {
+      var promise = $http.get(URL.endpoint("parlamentares")).then(function (response) {
+       
         var myFollowedVereadores = DB.load("vereador_follow");
 
         // flag nos vereadores que estou seguindo
@@ -88,4 +61,4 @@ angular.module('starter.services', [])
       return null;
     }
   };
-});
+})

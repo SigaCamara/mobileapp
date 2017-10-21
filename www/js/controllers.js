@@ -3,12 +3,15 @@ angular.module('starter.controllers', [])
 .controller('DashCtrl', function($scope) {})
 
 
-.controller('BairrosCtrl', function($scope, Vereadores, $rootScope, $ionicHistory, DB, $timeout) {
+.controller('BairrosCtrl', function($scope, Bairros, $rootScope, $ionicHistory, DB, $timeout) {
   var vm = this;
   this.listaItems = [];
 
+
   Bairros.allFollowed().then(function(data) {
     vm.listaItems = data;
+    debugger;
+    //Bairros.addFollow(data[0]);
   });
 })
 
