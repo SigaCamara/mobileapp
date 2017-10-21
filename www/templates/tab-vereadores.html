@@ -1,7 +1,7 @@
 <ion-view view-title="Vereadores">
   <ion-content>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="vereador in listaVereadores" type="item-text-wrap" href="#/tab/vereadores/{{vereador.id}}">
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="vereador in vm.listaVereadores" type="item-text-wrap" href="#/tab/vereadores/{{vereador.id}}">
         <img ng-src="{{vereador.face}}">
         <h2>{{vereador.name}}</h2>
         <p>{{vereador.lastText}}</p>
@@ -12,8 +12,13 @@
         </ion-option-button>
       </ion-item>
     </ion-list>
-
-    <a href="#/tab/vereadores-add">Adicionar</a>
-
+    <div class="row">
+      <div class="col col-75"></div>
+      <div class="col">
+        <a href="#/tab/vereadores-add" class="button button-rouded">
+          <i class="icon ion-plus"></i>
+        </a>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

@@ -2,33 +2,41 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('VereadorCtrl', function($scope, Vereadores) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
 
-  $scope.listaVereadores = [];
-  $scope.listaTodosVereadores = [];
+.controller('BairrosCtrl', function($scope, Vereadores, $rootScope, $ionicHistory, DB, $timeout) {
+  var vm = this;
+  this.listaItems = [];
 
-  var _scope = $scope;
-
-  Vereadores.allFollowed().then(function(data) {
-    _scope.listaVereadores = data;
+  Bairros.allFollowed().then(function(data) {
+    vm.listaItems = data;
   });
-
-  Vereadores.all().then(function(data) {
-    _scope.listaTodosVereadores = data;
-  });
-
-  $scope.remove = function(vereador) {
-    Vereadores.remove(vereador);
-  };
 })
 
+.controller('VereadorCtrl', function($scope, Vereadores, $rootScope, $ionicHistory, DB, $timeout) {
+  var vm = this;
+  this.listaVereadores = [];
+
+  Vereadores.allFollowed().then(function(data) {
+    vm.listaVereadores = data;
+  });
+})
+
+.controller('VereadorAdicionarCtrl', function($scope, Vereadores, $rootScope, $ionicHistory, DB,  $state,  $stateParams) {
+  var vm = this;
+  this.listaTodosVereadores = [];
+
+  this.updateFollow = function(vereador) {
+    if(vereador.follow === true){
+      Vereadores.addFollow(vereador);
+    } else {
+      Vereadores.removeFollow(vereador);
+    }
+  };
+
+  Vereadores.all().then(function(data) {
+    vm.listaTodosVereadores = data;
+  });
+})
 .controller('ChatDetailCtrl', function($scope, $stateParams, Vereadores) {
   $scope.vereador = Vereadores.get($stateParams.vereadorId);
 })

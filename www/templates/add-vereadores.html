@@ -4,7 +4,7 @@
         <p>Toque para seguir<p>
       </div>
 
-      <ion-checkbox ng-model="vereador.follow" class="item-checkbox-right item-avatar"  ng-repeat="vereador in listaTodosVereadores track by $index">
+      <ion-checkbox ng-model="vereador.follow" class="item-checkbox-right item-avatar" ng-change="vm.updateFollow(vereador)" ng-repeat="vereador in vm.listaTodosVereadores track by $index">
         <img ng-src="{{vereador.face}}">
         <h2>{{vereador.name}}</h2>
         <p>{{vereador.lastText}}</p>

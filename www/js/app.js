@@ -55,7 +55,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-vereadores': {
           templateUrl: 'templates/tab-vereadores.html',
-          controller: 'VereadorCtrl'
+          controller: 'VereadorCtrl',
+          controllerAs: 'vm',
+          cache: false
         }
       }
     })
@@ -64,7 +66,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-vereadores': {
           templateUrl: 'templates/add-vereadores.html',
-          controller: 'VereadorCtrl'
+          controller: 'VereadorAdicionarCtrl',
+          controllerAs: 'vm',
+          cache: false
         }
       }
     })
@@ -73,7 +77,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-vereadores': {
           templateUrl: 'templates/vereador-detail.html',
-          controller: 'ChatDetailCtrl'
+          controller: 'ChatDetailCtrl',
+          cache: false
         }
       }
     })
