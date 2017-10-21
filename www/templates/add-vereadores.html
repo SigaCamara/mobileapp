@@ -1,0 +1,17 @@
+<ion-view view-title="Adicionar Vereadores">
+    <ion-content>
+      <div class="content padding">
+        <p>Toque para seguir<p>
+      </div>
+
+      <ion-checkbox ng-model="vereador.follow" class="item-checkbox-right item-avatar"  ng-repeat="vereador in listaTodosVereadores track by $index">
+        <img ng-src="{{vereador.face}}">
+        <h2>{{vereador.name}}</h2>
+        <p>{{vereador.lastText}}</p>
+        <span style="color: #F00" ng-show="vereador.follow">Seguindo</span>
+      </ion-checkbox>
+    </ion-content>
+  </ion-view>
+
+
+  
