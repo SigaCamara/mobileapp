@@ -10,7 +10,6 @@ angular.module('starter.controllers', [])
 
   Bairros.allFollowed().then(function(data) {
     vm.listaItems = data;
-    debugger;
     //Bairros.addFollow(data[0]);
   });
 })

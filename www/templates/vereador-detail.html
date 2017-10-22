@@ -6,9 +6,10 @@
 -->
 <ion-view view-title="{{vereador.nome_parlamentar}}">
   <ion-content class="padding">
-    <img ng-src="{{vereador.url_foto}}" style="width: 64px; height: 64px">
+    <img ng-src="{{vereador.url_foto}}"  class="vereador" style="width: 64px; height: 64px">
+    <h3 class="name-vereador">{{vereador.nome_parlamentar}}</h3>
     <p>
-      sem conteudo aqui
+      {{vereador.biografia}}}
     </p>
   </ion-content>
 </ion-view>

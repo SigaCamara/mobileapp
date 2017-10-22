@@ -7,7 +7,7 @@
       <ion-checkbox ng-model="vereador.follow" class="item-checkbox-right item-avatar" ng-change="vm.updateFollow(vereador)" ng-repeat="vereador in vm.listaTodosVereadores track by $index">
         <img ng-src="{{vereador.url_foto}}">
         <h2>{{vereador.nome_parlamentar}}</h2>
-        <p>sem conteúdo aqui</p>
+        <p>{{vereador.biografia}}</p>
 
         <span ng-show="vereador.follow_loading">
             <span class="step size-48">
@@ -18,6 +18,3 @@
       </ion-checkbox>
     </ion-content>
   </ion-view>
-
-
-  

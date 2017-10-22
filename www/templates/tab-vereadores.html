@@ -4,7 +4,7 @@
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="vereador in vm.listaVereadores" type="item-text-wrap" href="#/tab/vereadores/{{vereador.id}}">
         <img ng-src="{{vereador.url_foto}}">
         <h2>{{vereador.nome_parlamentar}}</h2>
-        <p>sem conteúdo aqui</p>
+        <p>{{vereador.biografia}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>
 
         <ion-option-button class="button-assertive" ng-click="remove(vereador)">
