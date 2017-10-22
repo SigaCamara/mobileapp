@@ -1,9 +1,8 @@
-<ion-view view-title="Bairros">
+<ion-view view-title="Bairros que Acompanho">
     <ion-content>
       <ion-list>
-        <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="item in vm.listaItens" type="item-text-wrap" href="#/tab/bairros/{{item.id}}">
-          <h2>{{item.name}}</h2>
-          <p>{{item.lastText}}</p>
+        <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="item in vm.listaItems" type="item-text-wrap" href="#/tab/bairros/{{item.id}}">
+          <h2>{{item.nome}}</h2>
           <i class="icon ion-chevron-right icon-accessory"></i>
   
           <ion-option-button class="button-assertive" ng-click="remove(item)">

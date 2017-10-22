@@ -32,7 +32,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
@@ -45,7 +45,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
-        controller: 'BairrosCtrl'
+        controller: 'BairrosCtrl',
+        controllerAs: 'vm'
+      }
+    }
+  })
+
+  .state('tab.bairro-detail', {
+    url: '/bairros/:id',
+    views: {
+      'tab-bairros': {
+        templateUrl: 'templates/bairro-detail.html',
+        controller: 'BairrosDetailCtrl',
+        controllerAs: 'vm',
+        cache: false
       }
     }
   })
@@ -78,6 +91,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         'tab-vereadores': {
           templateUrl: 'templates/vereador-detail.html',
           controller: 'ChatDetailCtrl',
+          controllerAs: 'vm',
           cache: false
         }
       }
@@ -88,7 +102,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-account': {
         templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+        controller: 'AccountCtrl',
+        controllerAs: 'vm'
       }
     }
   });

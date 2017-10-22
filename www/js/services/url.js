@@ -7,7 +7,7 @@ moduleServices.factory('URL', function($http, $q, DB, Util) {
     port: "3000",
     version: "1"
   }
-
+  
   var getServerPath = function(){
     if(mocking){
       return getMockFor();
