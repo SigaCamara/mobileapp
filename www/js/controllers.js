@@ -7,11 +7,15 @@ angular.module('starter.controllers', [])
   var vm = this;
   this.listaItems = [];
 
-
-  Bairros.allFollowed().then(function(data) {
+  Bairros.all().then(function(data) {
     vm.listaItems = data;
     //Bairros.addFollow(data[0]);
   });
+})
+.controller('BairroDetailCtrl', function($scope, Bairros, $rootScope, $ionicHistory, DB, $timeout, $stateParams) {
+  var vm = this;
+  debugger;
+  this.bairro = Bairros.get($stateParams.id);
 })
 
 .controller('VereadorCtrl', function($scope, Vereadores, $rootScope, $ionicHistory, DB, $timeout) {

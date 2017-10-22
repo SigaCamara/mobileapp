@@ -1,17 +1,24 @@
-moduleServices.factory('Bairros', function($http, $q, DB, Util) {
+moduleServices.factory('Bairros', function($http, $q, DB, Util, URL) {
   
     return {
       all: function() {
         // return promise with bairros data
-        var promise = $http.get('/mock/mock-bairros.json').then(function (response) {
+        var promise = $http.get(URL.endpoint("bairros")).then(function (response) {
           var myFollowedBairros = DB.load("bairros_follow");
-  
+         
           // flag nos bairros que estou seguindo
           for(var i in response.data){
+
+            // Adiciona o campo ID para os Bairros
+            response.data[i] = {
+              id: response.data[i],
+              nome:  response.data[i]
+            }
+            
             var bairro = response.data[i];
             bairro.follow = (Util.getIndexOfItem(bairro, myFollowedBairros) !== false);
           }
-        
+          
           return response.data;
         });
   
@@ -52,11 +59,10 @@ moduleServices.factory('Bairros', function($http, $q, DB, Util) {
         DB.save('bairros_follow', myFollowedBairros);
       },
       get: function(bairroId) {
-  
         myFollowedBairros = DB.load("bairros_follow");
         if(myFollowedBairros){
           for (var i = 0; i < myFollowedBairros.length; i++) {
-            if (myFollowedBairros[i].id === parseInt(bairroId)) {
+            if (myFollowedBairros[i].id === bairroId) {
               return myFollowedBairros[i];
             }
           }
